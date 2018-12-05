@@ -4,16 +4,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
+ 
 public class LocatorTests extends Base {
 
 	@Test
 	@Parameters({"locator"})
 	public void locatorTest(String locatorString) {
 		log.info("Starting locatorTest for " + locatorString);
+		// #1: Opens page in browser - openPage() method defined below
 		openPage();
+		// #2: Use locator from test suite => locatorString
+		// getBy() method defined below
 		By locatorBy = getBy(locatorString);
-
+		// #3: Find the element
 		WebElement emailInputField = driver.findElement(locatorBy);
 		log.info("Element located");
 		log.info("Element is displayed: " + emailInputField.isDisplayed());
